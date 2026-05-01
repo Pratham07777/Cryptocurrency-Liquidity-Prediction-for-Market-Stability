@@ -1,13 +1,10 @@
 # Cryptocurrency Liquidity Prediction for Market Stability
 
-Machine learning project to predict cryptocurrency liquidity using market data such as price, trading volume, and market capitalization.
-
----
-
 ## Overview
 
-Cryptocurrency markets are highly volatile. Liquidity determines how easily assets can be traded without impacting price.
-This project builds a machine learning model to estimate liquidity and analyze market stability.
+This project aims to predict cryptocurrency liquidity using machine learning techniques based on market data such as price, trading volume, and market capitalization.
+
+Liquidity plays a critical role in market stability, as it determines how easily assets can be traded without significantly affecting their price. This project demonstrates how machine learning can be used to estimate liquidity and analyze market behavior.
 
 ---
 
@@ -16,8 +13,8 @@ This project builds a machine learning model to estimate liquidity and analyze m
 * Python
 * Pandas, NumPy
 * Matplotlib, Seaborn
-* Scikit-learn (Random Forest)
-* Streamlit (optional)
+* Scikit-learn (Random Forest Regressor)
+* Streamlit (optional deployment)
 
 ---
 
@@ -41,8 +38,8 @@ crypto-liquidity/
 1. Clone the repository
 
 ```
-git clone <your-repo-link>
-cd crypto-liquidity
+git clone https://github.com/Pratham07777/Cryptocurrency-Liquidity-Prediction-for-Market-Stability.git
+cd Cryptocurrency-Liquidity-Prediction-for-Market-Stability
 ```
 
 2. Install dependencies
@@ -63,41 +60,44 @@ python main.py
 
 ### 1. Data Collection
 
-* Historical cryptocurrency dataset (CoinGecko)
-* Includes price, 24h trading volume, and market capitalization
+* Dataset sourced from CoinGecko
+* Contains price, 24-hour trading volume, market capitalization, and percentage changes
 
 ### 2. Data Preprocessing
 
 * Handled missing values using forward fill
-* Ensured numerical consistency
-* Selected numeric features for analysis
+* Cleaned and validated dataset
+* Selected numerical features for analysis
 
 ### 3. Exploratory Data Analysis (EDA)
 
-* Statistical summaries
-* Visualizations:
+* Generated statistical summaries
+* Created visualizations:
 
   * Price distribution
   * Correlation heatmap
+* Identified relationships between features
 
 ### 4. Feature Engineering
 
 * Liquidity = 24h_volume / mkt_cap
 * Volatility = percentage change in price
-* Moving average (7-day)
-* Log transformations for skew reduction
+* Moving average (7-day window)
+* Log transformation applied to volume and market cap to reduce skewness
 
 ### 5. Model Selection
 
-* Linear Regression (initial, poor performance)
-* Random Forest Regressor (final model)
+* Linear Regression was initially used but performed poorly due to non-linear relationships
+* Random Forest Regressor was selected for better performance on non-linear data
 
 ### 6. Model Training
 
-* Train-test split (80/20)
+* Dataset split into training (80%) and testing (20%) sets
 * Model trained on engineered features
 
 ### 7. Model Evaluation
+
+Performance metrics:
 
 * MAE: 0.081
 * RMSE: 0.419
@@ -106,16 +106,59 @@ python main.py
 ### 8. Hyperparameter Tuning
 
 * Tuned number of estimators and tree depth
-* Improved model performance
+* Improved model stability and predictive performance
 
 ### 9. Model Testing and Validation
 
-* Tested on unseen data
-* Compared predicted vs actual values
+* Evaluated on unseen test data
+* Compared predicted vs actual liquidity values
 
 ### 10. Local Deployment (Optional)
 
-* Streamlit interface for prediction
+* Can be deployed using Streamlit or Flask
+* Enables real-time liquidity prediction
+
+---
+
+## How the Model Works
+
+Input Features:
+
+* Price
+* Log-transformed volume
+* Log-transformed market cap
+* Volatility
+* Moving average
+
+Model:
+
+* Random Forest Regressor
+
+Output:
+
+* Predicted liquidity score
+
+---
+
+## Why Random Forest?
+
+Random Forest was chosen because:
+
+* It handles non-linear relationships effectively
+* It is robust to outliers and noisy data
+* It performs well on tabular datasets
+
+---
+
+## Visualizations
+
+### Price Distribution
+
+![Price Distribution](price_distribution.png)
+
+### Correlation Matrix
+
+![Correlation Matrix](correlation_matrix.png)
 
 ---
 
@@ -169,16 +212,29 @@ flowchart LR
 
 ---
 
-## Conclusion
+## Limitations
 
-The model predicts cryptocurrency liquidity with moderate accuracy (R² ≈ 0.48).
-Feature engineering and non-linear modeling improved performance significantly.
+* Dataset is limited and not time-series based
+* Liquidity is derived, not directly measured
+* Model performance is moderate (R² ≈ 0.48)
 
 ---
 
 ## Future Work
 
-* Use time-series models (LSTM)
-* Improve feature selection
-* Hyperparameter optimization
-* Deploy full web application
+* Use time-series models (LSTM, ARIMA)
+* Improve feature engineering
+* Perform advanced hyperparameter tuning
+* Deploy full web-based application
+
+---
+
+## Submission Contents
+
+* Source code
+* Dataset
+* Trained model
+* EDA visualizations
+* HLD and LLD diagrams
+* Pipeline architecture
+* Final report
